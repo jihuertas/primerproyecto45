@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+{% block titulo %}Autores{% endblock %}
+{% block contenido %}
+    <ul>
+        {% for autor in autores %}
+        <li><a href=" {% url 'autor' pk=autor.pk %} ">{{autor.nombre}} {{autor.apellidos}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

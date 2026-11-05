@@ -1,11 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>funciona!!!!!</p>
-</body>
-</html> 
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/blog.css' %}">{% endblock %}
+
+{% block titulo %}Entradas del blog{% endblock %}
+{% block contenido %}
+<ul>
+    {% for post in posts %}
+        <li><a href="{% url 'detalle' pk=post.pk %}">{{ post.titulo}}</a>
+        <a href="{% url 'autor' pk=post.autor.pk %}">({{post.autor}})</a></li>
+    {% endfor %}
+
+</ul>
+
+<h2>Categorías:</h2>
+<ul>
+    {% for categoria in categorias %}
+        <li><a href="{% url 'categoria' pk=categoria.pk %}">{{categoria.nombre}}</a></li>
+    {% endfor %}
+
+</ul>
+{% endblock %}
+

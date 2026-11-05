@@ -1,0 +1,6 @@
+{% extends 'blog/base.html' %}
+{% block titulo %}DETALLE POST{% endblock %}
+{% block contenido %}
+    <small>{{post.autor}}</small>
+    <p>{{post.cuerpo}}</p>
+{% endblock %}
